@@ -1,4 +1,5 @@
 
+import pathlib
 from argostranslate import package, translate
 from packaging import version
 
@@ -7,9 +8,10 @@ import libretranslate.language
 
 def boot(load_only=None, update_models=False, install_models=False):
     try:
-        package_path_en_vi = pathlib.Path("d:\translate-en_vi-1_0.argosmodel") 
-        package_path_vi_en = pathlib.Path("d:\translate-vi_en-1_0.argosmodel") 
-        package.install_from_path(package_path)
+        package_path_en_vi = pathlib.Path("translate-en_vi-1_0.argosmodel") 
+        package_path_vi_en = pathlib.Path("translate-vi_en-1_0.argosmodel") 
+        package.install_from_path(package_path_en_vi)
+        package.install_from_path(package_path_vi_en)
         
         if update_models:
             check_and_install_models(load_only_lang_codes=load_only, update=update_models)
