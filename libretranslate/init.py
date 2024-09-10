@@ -18,12 +18,12 @@ def boot(load_only=None, update_models=False, install_models=False):
 
 
 def check_and_install_models(force=False, load_only_lang_codes=None,update=False):
+    print("Installing models in local directory")
+    package_path_en_vi = pathlib.Path("translate-en_vi-1_0.argosmodel") 
+    package_path_vi_en = pathlib.Path("translate-vi_en-1_0.argosmodel") 
+    package.install_from_path(package_path_en_vi)
+    package.install_from_path(package_path_vi_en)
     if len(package.get_installed_packages()) < 2 or force or update:
-        print("Installing models in local directory")
-        package_path_en_vi = pathlib.Path("translate-en_vi-1_0.argosmodel") 
-        package_path_vi_en = pathlib.Path("translate-vi_en-1_0.argosmodel") 
-        package.install_from_path(package_path_en_vi)
-        package.install_from_path(package_path_vi_en)
 
         # Update package definitions from remote
         print("Updating language models")
